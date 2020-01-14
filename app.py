@@ -1,14 +1,16 @@
-import time
+import os
 import random
+import time
 from flask import Flask, Response
 
 
 app = Flask(__name__)
 
+MAX_SLEEP = float(os.environ.get('MAX_SLEEP', 1.5))
 
 @app.route('/')
 def hello():
-    sleep_time = random.uniform(0, 1.5)
+    sleep_time = random.uniform(0, MAX_SLEEP)
     time.sleep(sleep_time)
 
     return "Slept for " + str(sleep_time)

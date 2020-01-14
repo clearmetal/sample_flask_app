@@ -7,3 +7,5 @@ services:
      - .:/app
     ports:
       - "5000:80"
+    environment:
+    - MAX_SLEEP=1.5
