@@ -16,7 +16,6 @@ app = Flask(__name__)
 def hello():
     sleep_time = random.uniform(0, MAX_SLEEP)
     time.sleep(sleep_time)
-    num_hello_requests.inc()
     request_latency_gauge.set(sleep_time)
 
     return "Slept for " + str(sleep_time)
