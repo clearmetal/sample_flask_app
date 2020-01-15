@@ -17,3 +17,12 @@ You should use Prometheus's docker compose implementation found here: https://gi
       summary: "High request latency on {{ $labels.instance }}"
       description: "{{ $labels.instance }} has a median request latency above 1s (current value: {{ $value }}s)"
 ```
+* In the prometheus project update `scrape_configs` in `prometheus/prometheus.yml` to include:
+```
+scrape_configs:
+  - job_name: 'interview-metrics'
+    scrape_interval: 5s
+    static_configs:
+          - targets: ['<COMPUTER_HOSTNAME>:5000']
+ ```
+ Where `<COMPUTER_HOSTNAME>` should be replaced by the output of `hostname` in terminal
